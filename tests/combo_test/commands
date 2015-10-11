@@ -1,0 +1,5 @@
+g++ -I. -I$SYSTEMC_HOME/include  -L$SYSTEMC_HOME/lib-linux -o sim *.cpp -lsystemc 
+./sim 
+export SYSTEMC_HOME=/home/denis/projects/sysc_original/systemc-2.3.1
+export LD_LIBRARY_PATH=$SYSTEMC_HOME/lib-linux
+
