@@ -1,0 +1,1388 @@
+﻿ 
+<!-- saved from url=(0069)http://www.iis.ee.ethz.ch/~zimmi/download/vhdlams_syntax.html#pred267 --> 
+<html><head><meta http-equiv="content-type" content="text/html; charset=iso-8859-1"> 
+<title>vhdl-ams syntax (ieee std 1076.1)</title> 
+</head><body> 
+ 
+<h2>vhdl-ams syntax (ieee std 1076.1)</h2> 
+ 
+<hr> 
+ 
+<h3>quick find:
+ 
+<a href="#pred001">a</a> 
+<a href="#pred027">b</a> 
+<a href="#pred050">c</a> 
+<a href="#pred081">d</a> 
+<a href="#pred090">e</a> 
+<a href="#pred115">f</a> 
+<a href="#pred127">g</a> 
+<a href="#pred138">h</a> 
+<a href="#pred138">i</a> 
+<a href="#pred138">j</a> 
+<a href="#pred160">k</a> 
+<a href="#pred160">l</a> 
+<a href="#pred170">m</a> 
+<a href="#pred173">n</a> 
+<a href="#pred181">o</a> 
+<a href="#pred184">p</a> 
+<a href="#pred208">q</a> 
+<a href="#pred212">r</a> 
+<a href="#pred220">s</a> 
+<a href="#pred266">t</a> 
+<a href="#pred277">u</a> 
+<a href="#pred280">v</a> 
+<a href="#pred282">w</a> 
+<a href="#pred282">x</a> 
+<a href="#pred282">y</a> 
+<a href="#pred282">z</a> 
+<a href="#keywords">keywords</a> 
+<a href="#attributes">attributes</a> 
+</h3> 
+ 
+<p>the start symbol is <a href="#pred084">design_file</a>.
+ 
+</p><p> 
+</p><hr> 
+ 
+ 
+<h3>syntax:</h3> 
+ 
+<dl> 
+ 
+<p></p><dt> <a name="pred001">abstract_literal</a> ::=
+  </dt><dd> <a href="#pred081">decimal_literal</a> | <a href="#pred031">based_literal</a> 
+ 
+<p></p></dd><dt> <a name="pred002">access_type_definition</a> ::=
+  </dt><dd> <b>access</b> <a href="#pred264">subtype_indication</a> 
+ 
+<p></p></dd><dt> <a name="pred003">across_aspect</a> ::=
+  </dt><dd> <a href="#pred139">identifier_list</a> 
+       [ <a href="#pred272">tolerance_aspect</a> ]
+       [ := <a href="#pred112">expression</a> ] <b>across</b> 
+ 
+<p></p></dd><dt> <a name="pred004">actual_designator</a> ::=
+  </dt><dd> <a href="#pred112">expression</a> 
+  <br> | <i>signal_</i><a href="#pred173">name</a> 
+  <br> | <i>variable_</i><a href="#pred173">name</a> 
+  <br> | <i>file_</i><a href="#pred173">name</a> 
+  <br> | <i>terminal_</i><a href="#pred173">name</a> 
+  <br> | <i>quantity_</i><a href="#pred173">name</a> 
+  <br> | <b>open</b> 
+ 
+<p></p></dd><dt> <a name="pred005">actual_parameter_part</a> ::=
+  </dt><dd> <i>parameter_</i><a href="#pred022">association_list</a> 
+ 
+<p></p></dd><dt> <a name="pred006">actual_part</a> ::=
+  </dt><dd> <a href="#pred004">actual_designator</a> 
+  <br> | <i>function_</i><a href="#pred173">name</a> ( <a href="#pred004">actual_designator</a> )
+  <br> | <a href="#pred276">type_mark</a> ( <a href="#pred004">actual_designator</a> )
+ 
+<p></p></dd><dt> <a name="pred007">adding_operator</a> ::=
+  </dt><dd> + | - | &amp;
+ 
+<p></p></dd><dt> <a name="pred008">aggregate</a> ::=
+  </dt><dd> ( <a href="#pred090">element_association</a> { , <a href="#pred090">element_association</a> } )
+ 
+<p></p></dd><dt> <a name="pred009">alias_declaration</a> ::=
+  </dt><dd> <b>alias</b> <a href="#pred010">alias_designator</a> [ : <a href="#pred011">alias_indication</a> ] <b>is</b> <a href="#pred173">name</a> [ <a href="#pred238">signature</a> ] ;
+ 
+<p></p></dd><dt> <a name="pred010">alias_designator</a> ::=
+  </dt><dd> <a href="#pred138">identifier</a> 
+  <br> | <a href="#pred052">character_literal</a> 
+  <br> | <a href="#pred182">operator_symbol</a> 
+ 
+<p></p></dd><dt> <a name="pred011">alias_indication</a> ::=
+  </dt><dd> <a href="#pred264">subtype_indication</a> 
+  <br> | <a href="#pred254">subnature_indication</a> 
+ 
+<p></p></dd><dt> <a name="pred012">allocator</a> ::=
+  </dt><dd> <b>new</b> <a href="#pred264">subtype_indication</a> 
+  <br> | <b>new</b> <a href="#pred208">qualified_expression</a> 
+ 
+<p></p></dd><dt> <a name="pred013">architecture_body</a> ::=
+  </dt><dd> <b>architecture</b> <a href="#pred138">identifier</a> <b>of</b> <i>entity_</i><a href="#pred173">name</a> <b>is</b> 
+    <ul> <a href="#pred014">architecture_declarative_part</a> </ul> 
+  <b>begin</b> 
+    <ul> <a href="#pred016">architecture_statement_part</a> </ul> 
+  <b>end</b> [ <b>architecture</b> ] [ <i>architecture_</i><a href="#pred240">simple_name</a> ] ;
+ 
+<p></p></dd><dt> <a name="pred014">architecture_declarative_part</a> ::=
+  </dt><dd> { <a href="#pred039">block_declarative_item</a> }
+ 
+<p></p></dd><dt> <a name="pred015">architecture_statement</a> ::=
+  </dt><dd> <a href="#pred247">simultaneous_statement</a> 
+  <br> | <a href="#pred065">concurrent_statement</a> 
+ 
+<p></p></dd><dt> <a name="pred016">architecture_statement_part</a> ::=
+  </dt><dd> { <a href="#pred015">architecture_statement</a> }
+ 
+<p></p></dd><dt> <a name="pred017">array_nature_definition</a> ::=
+  </dt><dd> <a href="#pred278">unconstrained_nature_definition</a> | <a href="#pred077">constrained_nature_definition</a> 
+ 
+<p></p></dd><dt> <a name="pred018">array_type_definition</a> ::=
+  </dt><dd> <a href="#pred277">unconstrained_array_definition</a> | <a href="#pred076">constrained_array_definition</a> 
+ 
+<p></p></dd><dt> <a name="pred019">assertion</a> ::=
+  </dt><dd> <b>assert</b> <a href="#pred066">condition</a> 
+    <ul> [ <b>report</b> <a href="#pred112">expression</a> ]
+    <br> [ <b>severity</b> <a href="#pred112">expression</a> ] </ul> 
+ 
+<p></p></dd><dt> <a name="pred020">assertion_statement</a> ::=
+  </dt><dd> [ <a href="#pred160">label</a> : ] <a href="#pred019">assertion</a> ;
+ 
+<p></p></dd><dt> <a name="pred021">association_element</a> ::=
+  </dt><dd> [ <a href="#pred123">formal_part</a> =&gt; ] <a href="#pred006">actual_part</a> 
+ 
+<p></p></dd><dt> <a name="pred022">association_list</a> ::=
+  </dt><dd> <a href="#pred021">association_element</a> { , <a href="#pred021">association_element</a> }
+ 
+<p></p></dd><dt> <a name="pred023">attribute_declaration</a> ::=
+  </dt><dd> <b>attribute</b> <a href="#pred138">identifier</a> : <a href="#pred276">type_mark</a> ;
+ 
+<p></p></dd><dt> <a name="pred024">attribute_designator</a> ::=
+  </dt><dd> <i>attribute_</i><a href="#pred240">simple_name</a> 
+ 
+<p></p></dd><dt> <a name="pred025">attribute_name</a> ::=
+  </dt><dd> <a href="#pred196">prefix</a> [ <a href="#pred238">signature</a> ] ' <a href="#pred024">attribute_designator</a> [ ( <a href="#pred112">expression</a> { , <a href="#pred112">expression</a> } ) ]
+ 
+<p></p></dd><dt> <a name="pred026">attribute_specification</a> ::=
+  </dt><dd> <b>attribute</b> <a href="#pred024">attribute_designator</a> <b>of</b> <a href="#pred104">entity_specification</a> <b>is</b> <a href="#pred112">expression</a> ;
+ 
+<p></p></dd><dt> <a name="pred027">base</a> ::=
+  </dt><dd> <a href="#pred148">integer</a> 
+ 
+<p></p></dd><dt> <a name="pred028">base_specifier</a> ::=
+  </dt><dd> b | o | x
+ 
+<p></p></dd><dt> <a name="pred030">based_integer</a> ::=
+  </dt><dd> <a href="#pred113">extended_digit</a> { [underline ] <a href="#pred113">extended_digit</a> }
+ 
+<p></p></dd><dt> <a name="pred031">based_literal</a> ::=
+  </dt><dd> <a href="#pred027">base</a> # <a href="#pred030">based_integer</a> [ . <a href="#pred030">based_integer</a> ] # [ <a href="#pred111">exponent</a> ]
+ 
+<p></p></dd><dt> <a name="pred032">basic_character</a> ::=
+  </dt><dd><a href="#pred033">basic_graphic_character</a> | format_effector
+ 
+<p></p></dd><dt> <a name="pred033">basic_graphic_character</a> ::=
+  </dt><dd> upper_case_letter | digit | special_character | space_character
+ 
+<p></p></dd><dt> <a name="pred034">basic_identifier</a> ::=
+  </dt><dd> <a href="#pred161">letter</a> { [ underline ] <a href="#pred162">letter_or_digit</a> }
+ 
+<p></p></dd><dt> <a name="pred035">binding_indication</a> ::=
+  </dt><dd> [ <b>use</b> <a href="#pred094">entity_aspect</a> ]
+  <br> [ <a href="#pred131">generic_map_aspect</a> ]
+  <br> [ <a href="#pred195">port_map_aspect</a> ]
+ 
+<p></p></dd><dt> <a name="pred036">bit_string_literal</a> ::=
+  </dt><dd> <a href="#pred028">base_specifier</a> " [ <a href="#pred037">bit_value</a> ] "
+ 
+<p></p></dd><dt> <a name="pred037">bit_value</a> ::=
+  </dt><dd> <a href="#pred113">extended_digit</a> { [ underline ] <a href="#pred113">extended_digit</a> }
+ 
+<p></p></dd><dt> <a name="pred038">block_configuration</a> ::=
+  </dt><dd> <b>for</b> <a href="#pred042">block_specification</a> 
+    <ul> { <a href="#pred279">use_clause</a> }
+    <br> { <a href="#pred073">configuration_item</a> }
+  </ul> <b>end</b> <b>for</b> ;
+ 
+<p></p></dd><dt> <a name="pred039">block_declarative_item</a> ::=
+  </dt><dd> <a href="#pred257">subprogram_declaration</a> 
+  <br> | <a href="#pred256">subprogram_body</a> 
+  <br> | <a href="#pred274">type_declaration</a> 
+  <br> | <a href="#pred263">subtype_declaration</a> 
+  <br> | <a href="#pred075">constant_declaration</a> 
+  <br> | <a href="#pred235">signal_declaration</a> 
+  <br> | <i>shared_</i><a href="#pred281">variable_declaration</a> 
+  <br> | <a href="#pred116">file_declaration</a> 
+  <br> | <a href="#pred009">alias_declaration</a> 
+  <br> | <a href="#pred056">component_declaration</a> 
+  <br> | <a href="#pred023">attribute_declaration</a> 
+  <br> | <a href="#pred026">attribute_specification</a> 
+  <br> | <a href="#pred074">configuration_specification</a> 
+  <br> | <a href="#pred088">disconnection_specification</a> 
+  <br> | <a href="#pred252">step_limit_specification</a> 
+  <br> | <a href="#pred279">use_clause</a> 
+  <br> | <a href="#pred136">group_template_declaration</a> 
+  <br> | <a href="#pred135">group_declaration</a> 
+  <br> | <a href="#pred174">nature_declaration</a> 
+  <br> | <a href="#pred253">subnature_declaration</a> 
+  <br> | <a href="#pred209">quantity_declaration</a> 
+  <br> | <a href="#pred269">terminal_declaration</a> 
+ 
+<p></p></dd><dt> <a name="pred040">block_declarative_part</a> ::=
+  </dt><dd> { <a href="#pred039">block_declarative_item</a> }
+ 
+<p></p></dd><dt> <a name="pred041">block_header</a> ::=
+  </dt><dd> [ <a href="#pred129">generic_clause</a> 
+  <br> [ <a href="#pred131">generic_map_aspect</a> ; ] ]
+  <br> [ <a href="#pred193">port_clause</a> 
+  <br> [ <a href="#pred195">port_map_aspect</a> ; ] ]
+ 
+<p></p></dd><dt> <a name="pred042">block_specification</a> ::=
+  </dt><dd> <i>architecture_</i><a href="#pred173">name</a> 
+  <br> | <i>block_statement_</i><a href="#pred160">label</a> 
+  <br> | <i>generate_statement_</i><a href="#pred160">label</a> [ ( <a href="#pred143">index_specification</a> ) ]
+ 
+<p></p></dd><dt> <a name="pred043">block_statement</a> ::=
+  </dt><dd> <i>block_</i><a href="#pred160">label</a> :
+     <ul> <b>block</b> [ ( <i>guard_</i><a href="#pred112">expression</a> ) ] [ <b>is</b> ]
+       <ul> <a href="#pred041">block_header</a> 
+       <br> <a href="#pred040">block_declarative_part</a> 
+     </ul> <b>begin</b> 
+       <ul> <a href="#pred044">block_statement_part</a> 
+     </ul> <b>end</b> <b>block</b> [ <i>block_</i><a href="#pred160">label</a> ] ; </ul> 
+ 
+<p></p></dd><dt> <a name="pred044">block_statement_part</a> ::=
+  </dt><dd> { <a href="#pred015">architecture_statement</a> }
+ 
+<p></p></dd><dt> <a name="pred045">branch_quantity_declaration</a> ::=
+  </dt><dd> <b>quantity</b> [ <a href="#pred003">across_aspect</a> ] [ <a href="#pred270">through_aspect</a> ] <a href="#pred268">terminal_aspect</a> ;
+ 
+<p></p></dd><dt> <a name="pred046">break_element</a> ::=
+  </dt><dd> [ <a href="#pred048">break_selector_clause</a> ] <i>quantity_</i><a href="#pred173">name</a> =&gt; <a href="#pred112">expression</a> 
+ 
+<p></p></dd><dt> <a name="pred047">break_list</a> ::=
+  </dt><dd> <a href="#pred046">break_element</a> { , <a href="#pred046">break_element</a> }
+ 
+<p></p></dd><dt> <a name="pred048">break_selector_clause</a> ::=
+  </dt><dd> <b>for</b> <i>quantity_</i><a href="#pred173">name</a> <b>use</b> 
+ 
+<p></p></dd><dt> <a name="pred049">break_statement</a> ::=
+  </dt><dd> [ <a href="#pred160">label</a> : ] <b>break</b> [ <a href="#pred047">break_list</a> ] [ <b>when</b> <a href="#pred066">condition</a> ] ;
+ 
+<p></p></dd><dt> <a name="pred050">case_statement</a> ::=
+  </dt><dd> [ <i>case_</i><a href="#pred160">label</a> : ]
+    <ul> <b>case</b> <a href="#pred112">expression</a> <b>is</b> 
+      <ul> <a href="#pred051">case_statement_alternative</a> 
+      <br> { <a href="#pred051">case_statement_alternative</a> }
+    </ul> <b>end</b> <b>case</b> [ <i>case_</i><a href="#pred160">label</a> ] ; </ul> 
+ 
+<p></p></dd><dt> <a name="pred051">case_statement_alternative</a> ::=
+  </dt><dd> <b>when</b> <a href="#pred054">choices</a> =&gt;
+    <ul> <a href="#pred229">sequence_of_statements</a> </ul> 
+ 
+<p></p></dd><dt> <a name="pred052">character_literal</a> ::=
+  </dt><dd> ' <a href="#pred132">graphic_character</a> '
+ 
+<p></p></dd><dt> <a name="pred053">choice</a> ::=
+  </dt><dd> <a href="#pred239">simple_expression</a> 
+  <br> | <a href="#pred089">discrete_range</a> 
+  <br> | <i>element_</i><a href="#pred240">simple_name</a> 
+  <br> | <b>others</b> 
+ 
+<p></p></dd><dt> <a name="pred054">choices</a> ::=
+  </dt><dd> <a href="#pred053">choice</a> { | <a href="#pred053">choice</a> }
+ 
+<p></p></dd><dt> <a name="pred055">component_configuration</a> ::=
+  </dt><dd> <b>for</b> <a href="#pred058">component_specification</a> 
+    <ul> [ <a href="#pred035">binding_indication</a> ; ]
+    <br> [ <a href="#pred038">block_configuration</a> ]
+  </ul> <b>end</b> <b>for</b> ;
+ 
+<p></p></dd><dt> <a name="pred056">component_declaration</a> ::=
+  </dt><dd> <b>component</b> <a href="#pred138">identifier</a> [ <b>is</b> ]
+    <ul> [ <i>local_</i><a href="#pred129">generic_clause</a> ]
+    <br> [ <i>local_</i><a href="#pred193">port_clause</a> ]
+  </ul> <b>end</b> <b>component</b> [ <i>component_</i><a href="#pred240">simple_name</a> ] ;
+ 
+<p></p></dd><dt> <a name="pred057">component_instantiation_statement</a> ::=
+  </dt><dd> <i>instantiation_</i><a href="#pred160">label</a> :
+    <ul> <a href="#pred146">instantiated_unit</a> 
+      <ul> [ <a href="#pred131">generic_map_aspect</a> ]
+      <br> [ <a href="#pred195">port_map_aspect</a> ] ; </ul></ul> 
+ 
+<p></p></dd><dt> <a name="pred058">component_specification</a> ::=
+  </dt><dd> <a href="#pred147">instantiation_list</a> : <i>component_</i><a href="#pred173">name</a> 
+ 
+<p></p></dd><dt> <a name="pred059">composite_nature_definition</a> ::=
+  </dt><dd> <a href="#pred017">array_nature_definition</a> 
+  <br> | <a href="#pred214">record_nature_definition</a> 
+ 
+<p></p></dd><dt> <a name="pred060">composite_type_definition</a> ::=
+  </dt><dd> <a href="#pred018">array_type_definition</a> 
+  <br> | <a href="#pred215">record_type_definition</a> 
+ 
+<p></p></dd><dt> <a name="pred061">concurrent_assertion_statement</a> ::=
+  </dt><dd> [ <a href="#pred160">label</a> : ] [ <b>postponed</b> ] <a href="#pred019">assertion</a> ;
+ 
+<p></p></dd><dt> <a name="pred062">concurrent_break_statement</a> ::=
+  </dt><dd> [ <a href="#pred160">label</a> : ] <b>break</b> [ <a href="#pred047">break_list</a> ] [ <a href="#pred227">sensitivity_clause</a> ] [ <b>when</b> <a href="#pred066">condition</a> ] ;
+ 
+<p></p></dd><dt> <a name="pred063">concurrent_procedure_call_statement</a> ::=
+  </dt><dd> [ <a href="#pred160">label</a> : ] [ <b>postponed</b> ] <a href="#pred202">procedure_call</a> ;
+ 
+<p></p></dd><dt> <a name="pred064">concurrent_signal_assignment_statement</a> ::=
+  </dt><dd> [ <a href="#pred160">label</a> : ] [ <b>postponed</b> ] <a href="#pred068">conditional_signal_assignment</a> 
+  <br> | [ <a href="#pred160">label</a> : ] [ <b>postponed</b> ] <a href="#pred225">selected_signal_assignment</a> 
+ 
+<p></p></dd><dt> <a name="pred065">concurrent_statement</a> ::=
+  </dt><dd> <a href="#pred043">block_statement</a> 
+  <br> | <a href="#pred206">process_statement</a> 
+  <br> | <a href="#pred063">concurrent_procedure_call_statement</a> 
+  <br> | <a href="#pred061">concurrent_assertion_statement</a> 
+  <br> | <a href="#pred064">concurrent_signal_assignment_statement</a> 
+  <br> | <a href="#pred057">component_instantiation_statement</a> 
+  <br> | <a href="#pred127">generate_statement</a> 
+  <br> | <a href="#pred062">concurrent_break_statement</a> 
+ 
+<p></p></dd><dt> <a name="pred066">condition</a> ::=
+  </dt><dd> <i>boolean_</i><a href="#pred112">expression</a> 
+ 
+<p></p></dd><dt> <a name="pred067">condition_clause</a> ::=
+  </dt><dd> <b>until</b> <a href="#pred066">condition</a> 
+ 
+<p></p></dd><dt> <a name="pred068">conditional_signal_assignment</a> ::=
+  </dt><dd> <a href="#pred266">target</a> &lt;= <a href="#pred183">options</a> <a href="#pred069">conditional_waveforms</a> ;
+ 
+<p></p></dd><dt> <a name="pred069">conditional_waveforms</a> ::=
+  </dt><dd> { <a href="#pred283">waveform</a> <b>when</b> <a href="#pred066">condition</a> <b>else</b> }
+  <br> <a href="#pred283">waveform</a> [ <b>when</b> <a href="#pred066">condition</a> ]
+ 
+<p></p></dd><dt> <a name="pred070">configuration_declaration</a> ::=
+  </dt><dd> <b>configuration</b> <a href="#pred138">identifier</a> <b>of</b> <i>entity_</i><a href="#pred173">name</a> <b>is</b> 
+    <ul> <a href="#pred072">configuration_declarative_part</a> 
+    <br> <a href="#pred038">block_configuration</a> 
+  </ul><b>end</b> [ <b>configuration</b> ] [ <i>configuration_</i><a href="#pred240">simple_name</a> ] ;
+ 
+<p></p></dd><dt> <a name="pred071">configuration_declarative_item</a> ::=
+  </dt><dd> <a href="#pred279">use_clause</a> 
+  <br> | <a href="#pred026">attribute_specification</a> 
+  <br> | <a href="#pred135">group_declaration</a> 
+ 
+<p></p></dd><dt> <a name="pred072">configuration_declarative_part</a> ::=
+  </dt><dd> { <a href="#pred071">configuration_declarative_item</a> }
+ 
+<p></p></dd><dt> <a name="pred073">configuration_item</a> ::=
+  </dt><dd> <a href="#pred038">block_configuration</a> 
+  <br> | <a href="#pred055">component_configuration</a> 
+ 
+<p></p></dd><dt> <a name="pred074">configuration_specification</a> ::=
+  </dt><dd> <b>for</b> <a href="#pred058">component_specification</a> <a href="#pred035">binding_indication</a> ;
+ 
+<p></p></dd><dt> <a name="pred075">constant_declaration</a> ::=
+  </dt><dd> <b>constant</b> <a href="#pred139">identifier_list</a> : <a href="#pred264">subtype_indication</a> [ := <a href="#pred112">expression</a> ] ;
+ 
+<p></p></dd><dt> <a name="pred076">constrained_array_definition</a> ::=
+  </dt><dd> <b>array</b> <a href="#pred142">index_constraint</a> <b>of</b> <i>element_</i><a href="#pred264">subtype_indication</a> 
+ 
+<p></p></dd><dt> <a name="pred077">constrained_nature_definition</a> ::=
+  </dt><dd> <b>array</b> <a href="#pred142">index_constraint</a> <b>of</b> <a href="#pred254">subnature_indication</a> 
+ 
+<p></p></dd><dt> <a name="pred078">constraint</a> ::=
+  </dt><dd> <a href="#pred213">range_constraint</a> 
+  <br> | <a href="#pred142">index_constraint</a> 
+ 
+<p></p></dd><dt> <a name="pred079">context_clause</a> ::=
+  </dt><dd> { <a href="#pred080">context_item</a> }
+ 
+<p></p></dd><dt> <a name="pred080">context_item</a> ::=
+  </dt><dd> <a href="#pred163">library_clause</a> 
+  <br> | <a href="#pred279">use_clause</a> 
+ 
+<p></p></dd><dt> <a name="pred081">decimal_literal</a> ::=
+  </dt><dd> <a href="#pred148">integer</a> [ . <a href="#pred148">integer</a> ] [ <a href="#pred111">exponent</a> ]
+ 
+<p></p></dd><dt> <a name="pred082">declaration</a> ::=
+  </dt><dd> <a href="#pred274">type_declaration</a> 
+  <br> | <a href="#pred263">subtype_declaration</a> 
+  <br> | <a href="#pred181">object_declaration</a> 
+  <br> | <a href="#pred151">interface_declaration</a> 
+  <br> | <a href="#pred009">alias_declaration</a> 
+  <br> | <a href="#pred023">attribute_declaration</a> 
+  <br> | <a href="#pred056">component_declaration</a> 
+  <br> | <a href="#pred136">group_template_declaration</a> 
+  <br> | <a href="#pred135">group_declaration</a> 
+  <br> | <a href="#pred098">entity_declaration</a> 
+  <br> | <a href="#pred070">configuration_declaration</a> 
+  <br> | <a href="#pred257">subprogram_declaration</a> 
+  <br> | <a href="#pred187">package_declaration</a> 
+  <br> | <a href="#pred174">nature_declaration</a> 
+  <br> | <a href="#pred253">subnature_declaration</a> 
+  <br> | <a href="#pred209">quantity_declaration</a> 
+  <br> | <a href="#pred269">terminal_declaration</a> 
+ 
+<p></p></dd><dt> <a name="pred083">delay_mechanism</a> ::=
+  </dt><dd> <b>transport</b> 
+  <br> | [ <b>reject</b> <i>time_</i><a href="#pred112">expression</a> ] <b>inertial</b> 
+ 
+<p></p></dd><dt> <a name="pred084">design_file</a> ::=
+  </dt><dd> <a href="#pred085">design_unit</a> { <a href="#pred085">design_unit</a> }
+ 
+<p></p></dd><dt> <a name="pred085">design_unit</a> ::=
+  </dt><dd> <a href="#pred079">context_clause</a> <a href="#pred164">library_unit</a> 
+ 
+<p></p></dd><dt> <a name="pred086">designator</a> ::=
+  </dt><dd> <a href="#pred138">identifier</a> | <a href="#pred182">operator_symbol</a> 
+ 
+<p></p></dd><dt> <a name="pred087">direction</a> ::=
+  </dt><dd> <b>to</b> | <b>downto</b> 
+ 
+<p></p></dd><dt> <a name="pred088">disconnection_specification</a> ::=
+  </dt><dd> <b>disconnect</b> <a href="#pred137">guarded_signal_specification</a> <b>after</b> <i>time_</i><a href="#pred112">expression</a> ;
+ 
+<p></p></dd><dt> <a name="pred089">discrete_range</a> ::=
+  </dt><dd> <i>discrete_</i><a href="#pred264">subtype_indication</a> | <a href="#pred212">range</a> 
+ 
+<p></p></dd><dt> <a name="pred090">element_association</a> ::=
+  </dt><dd> [ <a href="#pred054">choices</a> =&gt; ] <a href="#pred112">expression</a> 
+ 
+<p></p></dd><dt> <a name="pred091">element_declaration</a> ::=
+  </dt><dd> <a href="#pred139">identifier_list</a> : <a href="#pred093">element_subtype_definition</a> ;
+ 
+<p></p></dd><dt> <a name="pred092">element_subnature_definition</a> ::=
+  </dt><dd> <a href="#pred254">subnature_indication</a> 
+ 
+<p></p></dd><dt> <a name="pred093">element_subtype_definition</a> ::=
+  </dt><dd> <a href="#pred264">subtype_indication</a> 
+ 
+<p></p></dd><dt> <a name="pred094">entity_aspect</a> ::=
+  </dt><dd> <b>entity</b> <i>entity_</i><a href="#pred173">name</a> [ ( <i>architecture_</i><a href="#pred138">identifier</a> ) ]
+  <br> | <b>configuration</b> <i>configuration_</i><a href="#pred173">name</a> 
+  <br> | <b>open</b> 
+ 
+<p></p></dd><dt> <a name="pred095">entity_class</a> ::=
+  </dt><dd> <b>entity</b> 
+  <br> | <b>architecture</b> 
+  <br> | <b>configuration</b> 
+  <br> | <b>procedure</b> 
+  <br> | <b>function</b> 
+  <br> | <b>package</b> 
+  <br> | <b>type</b> 
+  <br> | <b>subtype</b> 
+  <br> | <b>constant</b> 
+  <br> | <b>signal</b> 
+  <br> | <b>variable</b> 
+  <br> | <b>component</b> 
+  <br> | <b>label</b> 
+  <br> | <b>literal</b> 
+  <br> | <b>units</b> 
+  <br> | <b>group</b> 
+  <br> | <b>file</b> 
+  <br> | <b>nature</b> 
+  <br> | <b>subnature</b> 
+  <br> | <b>quantity</b> 
+  <br> | <b>terminal</b> 
+ 
+<p></p></dd><dt> <a name="pred096">entity_class_entry</a> ::=
+  </dt><dd> <a href="#pred095">entity_class</a> [ &lt;&gt; ]
+ 
+<p></p></dd><dt> <a name="pred097">entity_class_entry_list</a> ::=
+  </dt><dd> <a href="#pred096">entity_class_entry</a> { , <a href="#pred096">entity_class_entry</a> }
+ 
+<p></p></dd><dt> <a name="pred098">entity_declaration</a> ::=
+  </dt><dd> <b>entity</b> <a href="#pred138">identifier</a> <b>is</b> 
+    <ul> <a href="#pred102">entity_header</a> 
+    <br> <a href="#pred100">entity_declarative_part</a> 
+  </ul> [ <b>begin</b> 
+    <ul> <a href="#pred106">entity_statement_part</a> ]
+  </ul> <b>end</b> [ <b>entity</b> ] [ <i>entity_</i><a href="#pred240">simple_name</a> ] ;
+ 
+<p></p></dd><dt> <a name="pred099">entity_declarative_item</a> ::=
+  </dt><dd> <a href="#pred257">subprogram_declaration</a> 
+  <br> | <a href="#pred256">subprogram_body</a> 
+  <br> | <a href="#pred274">type_declaration</a> 
+  <br> | <a href="#pred263">subtype_declaration</a> 
+  <br> | <a href="#pred075">constant_declaration</a> 
+  <br> | <a href="#pred235">signal_declaration</a> 
+  <br> | <i>shared_</i><a href="#pred281">variable_declaration</a> 
+  <br> | <a href="#pred116">file_declaration</a> 
+  <br> | <a href="#pred009">alias_declaration</a> 
+  <br> | <a href="#pred023">attribute_declaration</a> 
+  <br> | <a href="#pred026">attribute_specification</a> 
+  <br> | <a href="#pred088">disconnection_specification</a> 
+  <br> | <a href="#pred252">step_limit_specification</a> 
+  <br> | <a href="#pred279">use_clause</a> 
+  <br> | <a href="#pred136">group_template_declaration</a> 
+  <br> | <a href="#pred135">group_declaration</a> 
+  <br> | <a href="#pred174">nature_declaration</a> 
+  <br> | <a href="#pred253">subnature_declaration</a> 
+  <br> | <a href="#pred209">quantity_declaration</a> 
+  <br> | <a href="#pred269">terminal_declaration</a> 
+ 
+<p></p></dd><dt> <a name="pred100">entity_declarative_part</a> ::=
+  </dt><dd> { <a href="#pred099">entity_declarative_item</a> }
+ 
+<p></p></dd><dt> <a name="pred101">entity_designator</a> ::=
+  </dt><dd> <a href="#pred107">entity_tag</a> [ <a href="#pred238">signature</a> ]
+ 
+<p></p></dd><dt> <a name="pred102">entity_header</a> ::=
+  </dt><dd> [ <i>formal_</i><a href="#pred129">generic_clause</a> ]
+  <br> [ <i>formal_</i><a href="#pred193">port_clause</a> ]
+ 
+<p></p></dd><dt> <a name="pred103">entity_name_list</a> ::=
+  </dt><dd> <a href="#pred101">entity_designator</a> { , <a href="#pred101">entity_designator</a> }
+  <br> | <b>others</b> 
+  <br> | <b>all</b> 
+ 
+<p></p></dd><dt> <a name="pred104">entity_specification</a> ::=
+  </dt><dd> <a href="#pred103">entity_name_list</a> : <a href="#pred095">entity_class</a> 
+ 
+<p></p></dd><dt> <a name="pred105">entity_statement</a> ::=
+  </dt><dd> <a href="#pred061">concurrent_assertion_statement</a> 
+  <br> | <i>passive_</i><a href="#pred063">concurrent_procedure_call_statement</a> 
+  <br> | <i>passive_</i><a href="#pred206">process_statement</a> 
+ 
+<p></p></dd><dt> <a name="pred106">entity_statement_part</a> ::=
+  </dt><dd> { <a href="#pred105">entity_statement</a> }
+ 
+<p></p></dd><dt> <a name="pred107">entity_tag</a> ::=
+  </dt><dd> <a href="#pred240">simple_name</a> 
+  <br> | <a href="#pred052">character_literal</a> 
+  <br> | <a href="#pred182">operator_symbol</a> 
+ 
+<p></p></dd><dt> <a name="pred108">enumeration_literal</a> ::=
+  </dt><dd> <a href="#pred138">identifier</a> | <a href="#pred052">character_literal</a> 
+ 
+<p></p></dd><dt> <a name="pred109">enumeration_type_definition</a> ::=
+  </dt><dd> ( <a href="#pred108">enumeration_literal</a> { , <a href="#pred108">enumeration_literal</a> } )
+ 
+<p></p></dd><dt> <a name="pred110">exit_statement</a> ::=
+  </dt><dd> [ <a href="#pred160">label</a> : ] <b>exit</b> [ <i>loop_</i><a href="#pred160">label</a> ] [ <b>when</b> <a href="#pred066">condition</a> ] ;
+ 
+<p></p></dd><dt> <a name="pred111">exponent</a> ::=
+  </dt><dd> e [ + ] <a href="#pred148">integer</a> | e - <a href="#pred148">integer</a> 
+ 
+<p></p></dd><dt> <a name="pred112">expression</a> ::=
+  </dt><dd> <a href="#pred216">relation</a> { <b>and</b> <a href="#pred216">relation</a> }
+  <br> | <a href="#pred216">relation</a> { <b>or</b> <a href="#pred216">relation</a> }
+  <br> | <a href="#pred216">relation</a> { <b>xor</b> <a href="#pred216">relation</a> }
+  <br> | <a href="#pred216">relation</a> [ <b>nand</b> <a href="#pred216">relation</a> ]
+  <br> | <a href="#pred216">relation</a> [ <b>nor</b> <a href="#pred216">relation</a> ]
+  <br> | <a href="#pred216">relation</a> { <b>xnor</b> <a href="#pred216">relation</a> }
+ 
+<p></p></dd><dt> <a name="pred113">extended_digit</a> ::=
+  </dt><dd> digit | <a href="#pred161">letter</a> 
+ 
+<p></p></dd><dt> <a name="pred114">extended_identifier</a> ::=
+  </dt><dd> \ <a name="#pred132">graphic_character</a> { <a name="#pred132">graphic_character</a> } \
+ 
+<p></p></dd><dt> <a name="pred115">factor</a> ::=
+  </dt><dd> <a href="#pred197">primary</a> [ ** <a href="#pred197">primary</a> ]
+  <br> | <b>abs</b> <a href="#pred197">primary</a> 
+  <br> | <b>not</b> <a href="#pred197">primary</a> 
+ 
+<p></p></dd><dt> <a name="pred116">file_declaration</a> ::=
+  </dt><dd> <b>file</b> <a href="#pred139">identifier_list</a> : <a href="#pred264">subtype_indication</a> [ <a href="#pred118">file_open_information</a> ] ;
+ 
+<p></p></dd><dt> <a name="pred117">file_logical_name</a> ::=
+  </dt><dd> <i>string_</i><a href="#pred112">expression</a> 
+ 
+<p></p></dd><dt> <a name="pred118">file_open_information</a> ::=
+  </dt><dd> [ <b>open</b> <i>file_open_kind_</i><a href="#pred112">expression</a> ] <b>is</b> <a href="#pred117">file_logical_name</a> 
+ 
+<p></p></dd><dt> <a name="pred119">file_type_definition</a> ::=
+  </dt><dd> <b>file of</b> <a href="#pred276">type_mark</a> 
+ 
+<p></p></dd><dt> <a name="pred120">floating_type_definition</a> ::=
+  </dt><dd> <a href="#pred213">range_constraint</a> 
+ 
+<p></p></dd><dt> <a name="pred121">formal_designator</a> ::=
+  </dt><dd> <i>generic_</i><a href="#pred173">name</a> 
+  <br> | <i>port_</i><a href="#pred173">name</a> 
+  <br> | <i>parameter_</i><a href="#pred173">name</a> 
+ 
+<p></p></dd><dt> <a name="pred122">formal_parameter_list</a> ::=
+  </dt><dd> <i>parameter_</i><a href="#pred154">interface_list</a> 
+ 
+<p></p></dd><dt> <a name="pred123">formal_part</a> ::=
+  </dt><dd> <a href="#pred121">formal_designator</a> 
+  <br> | <i>function_</i><a href="#pred173">name</a> ( <a href="#pred121">formal_designator</a> )
+  <br> | <a href="#pred276">type_mark</a>  ( <a href="#pred121">formal_designator</a> )
+ 
+<p></p></dd><dt> <a name="pred124">free_quantity_declaration</a> ::=
+  </dt><dd> <b>quantity</b> <a href="#pred139">identifier_list</a> : <a href="#pred264">subtype_indication</a> [ := <a href="#pred112">expression</a> ] ;
+ 
+<p></p></dd><dt> <a name="pred125">full_type_declaration</a> ::=
+  </dt><dd> <b>type</b> <a href="#pred138">identifier</a> <b>is</b> <a href="#pred275">type_definition</a> ;
+ 
+<p></p></dd><dt> <a name="pred126">function_call</a> ::=
+  </dt><dd> <i>function_</i><a href="#pred173">name</a> [ ( <a href="#pred005">actual_parameter_part</a> ) ]
+ 
+<p></p></dd><dt> <a name="pred127">generate_statement</a> ::=
+  </dt><dd> <i>generate_</i><a href="#pred160">label</a> :
+    <ul> <a href="#pred128">generation_scheme</a> <b>generate</b> 
+      <ul> [ {<a href="#pred039">block_declarative_item</a> }
+    </ul> <b>begin</b> ]
+      <ul> { <a href="#pred065">architecture_statement</a> }
+    </ul> <b>end</b> <b>generate</b> [ <i>generate_</i><a href="#pred160">label</a> ] ; </ul> 
+ 
+<p></p></dd><dt> <a name="pred128">generation_scheme</a> ::=
+  </dt><dd> <b>for</b> <i>generate_</i><a href="#pred190">parameter_specification</a> 
+  <br> | <b>if</b> <a href="#pred066">condition</a> 
+ 
+<p></p></dd><dt> <a name="pred129">generic_clause</a> ::=
+  </dt><dd> <b>generic</b> ( <a href="#pred130">generic_list</a> ) ;
+ 
+<p></p></dd><dt> <a name="pred130">generic_list</a> ::=
+  </dt><dd> <i>generic_</i><a href="#pred154">interface_list</a> 
+ 
+<p></p></dd><dt> <a name="pred131">generic_map_aspect</a> ::=
+  </dt><dd> <b>generic</b> <b>map</b> ( <i>generic_</i><a href="#pred022">association_list</a> )
+ 
+<p></p></dd><dt> <a name="pred132">graphic_character</a> ::=
+  </dt><dd> <a href="#pred033">basic_graphic_character</a> | lower_case_letter | other_special_character
+ 
+<p></p></dd><dt> <a name="pred133">group_constituent</a> ::=
+  </dt><dd> <a href="#pred173">name</a> | <a href="#pred052">character_literal</a> 
+ 
+<p></p></dd><dt> <a name="pred134">group_constituent_list</a> ::=
+  </dt><dd> <a href="#pred133">group_constituent</a> { , <a href="#pred133">group_constituent</a> }
+ 
+<p></p></dd><dt> <a name="pred135">group_declaration</a> ::=
+  </dt><dd> <b>group</b> <a href="#pred138">identifier</a> : <i>group_template_</i><a href="#pred173">name</a> ( <a href="#pred134">group_constituent_list</a> ) ;
+ 
+<p></p></dd><dt> <a name="pred136">group_template_declaration</a> ::=
+  </dt><dd> <b>group</b> <a href="#pred138">identifier</a> <b>is</b> ( <a href="#pred097">entity_class_entry_list</a> ) ;
+ 
+<p></p></dd><dt> <a name="pred137">guarded_signal_specification</a> ::=
+  </dt><dd> <i>guarded_</i><a href="#pred237">signal_list</a> : <a href="#pred276">type_mark</a> 
+ 
+<p></p></dd><dt> <a name="pred138">identifier</a> ::=
+  </dt><dd> <a href="#pred034">basic_identifier</a> | <a href="#pred114">extended_identifier</a> 
+ 
+<p></p></dd><dt> <a name="pred139">identifier_list</a> ::=
+  </dt><dd> <a href="#pred138">identifier</a> { , <a href="#pred138">identifier</a> }
+ 
+<p></p></dd><dt> <a name="pred140">if_statement</a> ::=
+  </dt><dd> [ <i>if_</i><a href="#pred160">label</a> : ]
+    <ul> <b>if</b> <a href="#pred066">condition</a> <b>then</b> 
+      <ul>  <a href="#pred229">sequence_of_statements</a> 
+    </ul> { <b>elsif</b> <a href="#pred066">condition</a> <b>then</b> 
+      <ul> <a href="#pred229">sequence_of_statements</a> }
+    </ul> [ <b>else</b> 
+      <ul> <a href="#pred229">sequence_of_statements</a> ]
+    </ul> <b>end</b> <b>if</b> [ <i>if_</i><a href="#pred160">label</a> ] ; </ul> 
+ 
+<p></p></dd><dt> <a name="pred141">incomplete_type_declaration</a> ::=
+  </dt><dd> <b>type</b> <a href="#pred138">identifier</a> ;
+ 
+<p></p></dd><dt> <a name="pred142">index_constraint</a> ::=
+  </dt><dd> ( <a href="#pred089">discrete_range</a> { , <a href="#pred089">discrete_range</a> } )
+ 
+<p></p></dd><dt> <a name="pred143">index_specification</a> ::=
+  </dt><dd> <a href="#pred089">discrete_range</a> 
+  <br> | <i>static_</i><a href="#pred112">expression</a> 
+ 
+<p></p></dd><dt> <a name="pred144">index_subtype_definition</a> ::=
+  </dt><dd> <a href="#pred276">type_mark</a> <b>range</b> &lt;&gt;
+ 
+<p></p></dd><dt> <a name="pred145">indexed_name</a> ::=
+  </dt><dd> <a href="#pred196">prefix</a> ( <a href="#pred112">expression</a> { , <a href="#pred112">expression</a> } )
+ 
+<p></p></dd><dt> <a name="pred146">instantiated_unit</a> ::=
+  </dt><dd> [ <b>component</b> ] <i>component_</i><a href="#pred173">name</a> 
+  <br> | <b>entity</b> <i>entity_</i><a href="#pred173">name</a> [ ( <i>architecture_</i><a href="#pred138">identifier</a> ) ]
+  <br> | <b>configuration</b> <i>configuration_</i><a href="#pred173">name</a> 
+ 
+<p></p></dd><dt> <a name="pred147">instantiation_list</a> ::=
+  </dt><dd> <i>instantiation_</i><a href="#pred160">label</a> { , <i>instantiation_</i><a href="#pred160">label</a> }
+  <br> | <b>others</b> 
+  <br> | <b>all</b> 
+ 
+<p></p></dd><dt> <a name="pred148">integer</a> ::=
+  </dt><dd> digit { [ underline ] digit }
+ 
+<p></p></dd><dt> <a name="pred149">integer_type_definition</a> ::=
+  </dt><dd> <a href="#pred213">range_constraint</a> 
+ 
+<p></p></dd><dt> <a name="pred150">interface_constant_declaration</a> ::=
+  </dt><dd> [ <b>constant</b> ] <a href="#pred139">identifier_list</a> : [ <b>in</b> ] <a href="#pred264">subtype_indication</a> [ := <i>static_</i><a href="#pred112">expression</a> ]
+ 
+<p></p></dd><dt> <a name="pred151">interface_declaration</a> ::=
+  </dt><dd> <a href="#pred150">interface_constant_declaration</a> 
+  <br> | <a href="#pred156">interface_signal_declaration</a> 
+  <br> | <a href="#pred158">interface_variable_declaration</a> 
+  <br> | <a href="#pred153">interface_file_declaration</a> 
+  <br> | <a href="#pred157">interface_terminal_declaration</a> 
+  <br> | <a href="#pred155">interface_quantity_declaration</a> 
+ 
+<p></p></dd><dt> <a name="pred152">interface_element</a> ::=
+  </dt><dd> <a href="#pred151">interface_declaration</a> 
+ 
+<p></p></dd><dt> <a name="pred153">interface_file_declaration</a> ::=
+  </dt><dd> <b>file</b> <a href="#pred139">identifier_list</a> : <a href="#pred264">subtype_indication</a> 
+ 
+<p></p></dd><dt> <a name="pred154">interface_list</a> ::=
+  </dt><dd> <a href="#pred152">interface_element</a> { ; <a href="#pred152">interface_element</a> }
+ 
+<p></p></dd><dt> <a name="pred155">interface_quantity_declaration</a> ::=
+  </dt><dd> <b>quantity</b> <a href="#pred139">identifier_list</a> : [ <b>in</b> | <b>out</b> ] <a href="#pred264">subtype_indication</a> [ := <i>static_</i><a href="#pred112">expression</a> ]
+ 
+<p></p></dd><dt> <a name="pred156">interface_signal_declaration</a> ::=
+  </dt><dd> [ <b>signal</b> ] <a href="#pred139">identifier_list</a> : [ <a href="#pred171">mode</a> ] <a href="#pred264">subtype_indication</a> [ <b>bus</b> ] [ := <i>static_</i><a href="#pred112">expression</a> ]
+ 
+<p></p></dd><dt> <a name="pred157">interface_terminal_declaration</a> ::=
+  </dt><dd> <b>terminal</b> <a href="#pred139">identifier_list</a> : <a href="#pred254">subnature_indication</a> 
+ 
+<p></p></dd><dt> <a name="pred158">interface_variable_declaration</a> ::=
+  </dt><dd> [ <b>variable</b> ] <a href="#pred139">identifier_list</a> : [ <a href="#pred171">mode</a> ] <a href="#pred264">subtype_indication</a> [ := <i>static_</i><a href="#pred112">expression</a> ]
+ 
+<p></p></dd><dt> <a name="pred159">iteration_scheme</a> ::=
+  </dt><dd> <b>while</b> <a href="#pred066">condition</a> 
+  <br> | <b>for</b> <i>loop_</i><a href="#pred190">parameter_specification</a> 
+ 
+<p></p></dd><dt> <a name="pred160">label</a> ::=
+  </dt><dd> <a href="#pred138">identifier</a> 
+ 
+<p></p></dd><dt> <a name="pred161">letter</a> ::=
+  </dt><dd> upper_case_letter | lower_case_letter
+ 
+<p></p></dd><dt> <a name="pred162">letter_or_digit</a> ::=
+  </dt><dd> <a href="#pred161">letter</a> | digit
+ 
+<p></p></dd><dt> <a name="pred163">library_clause</a> ::=
+  </dt><dd> <b>library</b> <a href="#pred167">logical_name_list</a> ;
+ 
+<p></p></dd><dt> <a name="pred164">library_unit</a> ::=
+  </dt><dd> <a href="#pred198">primary_unit</a> 
+  <br> | <a href="#pred222">secondary_unit</a> 
+ 
+<p></p></dd><dt> <a name="pred165">literal</a> ::=
+  </dt><dd> <a href="#pred180">numeric_literal</a> 
+  <br> | <a href="#pred108">enumeration_literal</a> 
+  <br> | <a href="#pred255">string_literal</a> 
+  <br> | <a href="#pred036">bit_string_literal</a> 
+  <br> | <b>null</b> 
+ 
+<p></p></dd><dt> <a name="pred166">logical_name</a> ::=
+  </dt><dd> <a href="#pred138">identifier</a> 
+ 
+<p></p></dd><dt> <a name="pred167">logical_name_list</a> ::=
+  </dt><dd> <a href="#pred166">logical_name</a> { , <a href="#pred166">logical_name</a> }
+ 
+<p></p></dd><dt> <a name="pred168">logical_operator</a> ::=
+  </dt><dd> <b>and</b> | <b>or</b> | <b>nand</b> | <b>nor</b> | <b>xor</b> | <b>xnor</b> 
+ 
+<p></p></dd><dt> <a name="pred169">loop_statement</a> ::=
+  </dt><dd> [ <i>loop_</i><a href="#pred160">label</a> : ]
+    <ul> [ <a href="#pred159">iteration_scheme</a> ] <b>loop</b> 
+      <ul> <a href="#pred229">sequence_of_statements</a> 
+    </ul> <b>end</b> <b>loop</b> [ <i>loop_</i><a href="#pred160">label</a> ] ; </ul> 
+ 
+<p></p></dd><dt> <a name="pred170">miscellaneous_operator</a> ::=
+  </dt><dd> ** | <b>abs</b> | <b>not</b> 
+ 
+<p></p></dd><dt> <a name="pred171">mode</a> ::=
+  </dt><dd> <b>in</b> | <b>out</b> | <b>inout</b> | <b>buffer</b> | <b>linkage</b> 
+ 
+<p></p></dd><dt> <a name="pred172">multiplying_operator</a> ::=
+  </dt><dd> * | / | <b>mod</b> | <b>rem</b> 
+ 
+<p></p></dd><dt> <a name="pred173">name</a> ::=
+  </dt><dd> <a href="#pred240">simple_name</a> 
+  <br> | <a href="#pred182">operator_symbol</a> 
+  <br> | <a href="#pred224">selected_name</a> 
+  <br> | <a href="#pred145">indexed_name</a> 
+  <br> | <a href="#pred249">slice_name</a> 
+  <br> | <a href="#pred025">attribute_name</a> 
+ 
+<p></p></dd><dt> <a name="pred174">nature_declaration</a> ::=
+  </dt><dd> <b>nature</b> <a href="#pred138">identifier</a> <b>is</b> <a href="#pred175">nature_definition</a> ;
+ 
+<p></p></dd><dt> <a name="pred175">nature_definition</a> ::=
+  </dt><dd> <a href="#pred220">scalar_nature_definition</a> 
+  <br> | <a href="#pred059">composite_nature_definition</a> 
+ 
+<p></p></dd><dt> <a name="pred176">nature_element_declaration</a> ::=
+  </dt><dd> <a href="#pred139">identifier_list</a> : <a href="#pred092">element_subnature_definition</a> 
+ 
+<p></p></dd><dt> <a name="pred177">nature_mark</a> ::=
+  </dt><dd> <i>nature_</i><a href="#pred173">name</a> | <i>subnature_</i><a href="#pred173">name</a> 
+ 
+<p></p></dd><dt> <a name="pred178">next_statement</a> ::=
+  </dt><dd> [ <a href="#pred160">label</a> : ] <b>next</b> [ <i>loop_</i><a href="#pred160">label</a> ] [ <b>when</b> <a href="#pred066">condition</a> ] ;
+ 
+<p></p></dd><dt> <a name="pred179">null_statement</a> ::=
+  </dt><dd> [ <a href="#pred160">label</a> : ] <b>null</b> ;
+ 
+<p></p></dd><dt> <a name="pred180">numeric_literal</a> ::=
+  </dt><dd> <a href="#pred001">abstract_literal</a> 
+  <br> | <a href="#pred191">physical_literal</a> 
+ 
+<p></p></dd><dt> <a name="pred181">object_declaration</a> ::=
+  </dt><dd> <a href="#pred075">constant_declaration</a> 
+  <br> | <a href="#pred235">signal_declaration</a> 
+  <br> | <a href="#pred281">variable_declaration</a> 
+  <br> | <a href="#pred116">file_declaration</a> 
+  <br> | <a href="#pred269">terminal_declaration</a> 
+  <br> | <a href="#pred209">quantity_declaration</a> 
+ 
+<p></p></dd><dt> <a name="pred182">operator_symbol</a> ::=
+  </dt><dd> <a href="#pred255">string_literal</a> 
+ 
+<p></p></dd><dt> <a name="pred183">options</a> ::=
+  </dt><dd> [ <b>guarded</b> ] [ <a href="#pred083">delay_mechanism</a> ]
+ 
+<p></p></dd><dt> <a name="pred184">package_body</a> ::=
+  </dt><dd> <b>package body</b> <i>package_</i><a href="#pred240">simple_name</a> <b>is</b> 
+    <ul> <a href="#pred186">package_body_declarative_part</a> 
+  </ul> <b>end</b> [ <b>package body</b> ] [ <i>package_</i><a href="#pred240">simple_name</a> ] ;
+ 
+<p></p></dd><dt> <a name="pred185">package_body_declarative_item</a> ::=
+  </dt><dd> <a href="#pred257">subprogram_declaration</a> 
+  <br> | <a href="#pred256">subprogram_body</a> 
+  <br> | <a href="#pred274">type_declaration</a> 
+  <br> | <a href="#pred263">subtype_declaration</a> 
+  <br> | <a href="#pred075">constant_declaration</a> 
+  <br> | <i>shared_</i><a href="#pred281">variable_declaration</a> 
+  <br> | <a href="#pred116">file_declaration</a> 
+  <br> | <a href="#pred009">alias_declaration</a> 
+  <br> | <a href="#pred279">use_clause</a> 
+  <br> | <a href="#pred136">group_template_declaration</a> 
+  <br> | <a href="#pred135">group_declaration</a> 
+ 
+<p></p></dd><dt> <a name="pred186">package_body_declarative_part</a> ::=
+  </dt><dd> { <a href="#pred185">package_body_declarative_item</a> }
+ 
+<p></p></dd><dt> <a name="pred187">package_declaration</a> ::=
+  </dt><dd> <b>package</b> <a href="#pred138">identifier</a> <b>is</b> 
+    <ul> <a href="#pred189">package_declarative_part</a> 
+  </ul> <b>end</b> [ <b>package</b> ] [ <i>package_</i><a href="#pred240">simple_name</a> ] ;
+ 
+<p></p></dd><dt> <a name="pred188">package_declarative_item</a> ::=
+  </dt><dd> <a href="#pred257">subprogram_declaration</a> 
+  <br> | <a href="#pred274">type_declaration</a> 
+  <br> | <a href="#pred263">subtype_declaration</a> 
+  <br> | <a href="#pred075">constant_declaration</a> 
+  <br> | <a href="#pred235">signal_declaration</a> 
+  <br> | <i>shared_</i><a href="#pred281">variable_declaration</a> 
+  <br> | <a href="#pred116">file_declaration</a> 
+  <br> | <a href="#pred009">alias_declaration</a> 
+  <br> | <a href="#pred056">component_declaration</a> 
+  <br> | <a href="#pred023">attribute_declaration</a> 
+  <br> | <a href="#pred026">attribute_specification</a> 
+  <br> | <a href="#pred088">disconnection_specification</a> 
+  <br> | <a href="#pred279">use_clause</a> 
+  <br> | <a href="#pred136">group_template_declaration</a> 
+  <br> | <a href="#pred135">group_declaration</a> 
+  <br> | <a href="#pred174">nature_declaration</a> 
+  <br> | <a href="#pred253">subnature_declaration</a> 
+  <br> | <a href="#pred269">terminal_declaration</a> 
+ 
+<p></p></dd><dt> <a name="pred189">package_declarative_part</a> ::=
+  </dt><dd> { <a href="#pred188">package_declarative_item</a> }
+ 
+<p></p></dd><dt> <a name="pred190">parameter_specification</a> ::=
+  </dt><dd> <a href="#pred138">identifier</a> <b>in</b> <a href="#pred089">discrete_range</a> 
+ 
+<p></p></dd><dt> <a name="pred191">physical_literal</a> ::=
+  </dt><dd> [ <a href="#pred001">abstract_literal</a> ] <i>unit_</i><a href="#pred173">name</a> 
+ 
+<p></p></dd><dt> <a name="pred192">physical_type_definition</a> ::=
+  </dt><dd> <a href="#pred213">range_constraint</a> 
+    <ul> <b>units</b> 
+      <ul> <a href="#pred029">primary_unit_declaration</a> 
+      <br> { <a href="#pred223">secondary_unit_declaration</a> }
+    </ul> <b>end</b> <b>units</b> [ <i>physical_type_</i><a href="#pred240">simple_name</a> ] </ul> 
+ 
+<p></p></dd><dt> <a name="pred193">port_clause</a> ::=
+  </dt><dd> <b>port</b> ( <a href="#pred194">port_list</a> ) ;
+ 
+<p></p></dd><dt> <a name="pred194">port_list</a> ::=
+  </dt><dd> <i>port_</i><a href="#pred154">interface_list</a> 
+ 
+<p></p></dd><dt> <a name="pred195">port_map_aspect</a> ::=
+  </dt><dd> <b>port</b> <b>map</b> ( <i>port_</i><a href="#pred022">association_list</a> )
+ 
+<p></p></dd><dt> <a name="pred196">prefix</a> ::=
+  </dt><dd> <a href="#pred173">name</a> 
+  <br> | <a href="#pred126">function_call</a> 
+ 
+<p></p></dd><dt> <a name="pred197">primary</a> ::=
+  </dt><dd> <a href="#pred173">name</a> 
+  <br> | <a href="#pred165">literal</a> 
+  <br> | <a href="#pred008">aggregate</a> 
+  <br> | <a href="#pred126">function_call</a> 
+  <br> | <a href="#pred208">qualified_expression</a> 
+  <br> | <a href="#pred273">type_conversion</a> 
+  <br> | <a href="#pred012">allocator</a> 
+  <br> | ( <a href="#pred112">expression</a> )
+ 
+<p></p></dd><dt> <a name="pred198">primary_unit</a> ::=
+  </dt><dd> <a href="#pred098">entity_declaration</a> 
+  <br> | <a href="#pred070">configuration_declaration</a> 
+  <br> | <a href="#pred187">package_declaration</a> 
+ 
+<p></p></dd><dt> <a name="pred029">primary_unit_declaration</a> ::=
+  </dt><dd> <a href="#pred138">identifier</a> ;
+ 
+<p></p></dd><dt> <a name="pred199">procedural_declarative_item</a> ::=
+  </dt><dd> <a href="#pred257">subprogram_declaration</a> 
+  <br> | <a href="#pred256">subprogram_body</a> 
+  <br> | <a href="#pred274">type_declaration</a> 
+  <br> | <a href="#pred263">subtype_declaration</a> 
+  <br> | <a href="#pred075">constant_declaration</a> 
+  <br> | <a href="#pred281">variable_declaration</a> 
+  <br> | <a href="#pred009">alias_declaration</a> 
+  <br> | <a href="#pred023">attribute_declaration</a> 
+  <br> | <a href="#pred026">attribute_specification</a> 
+  <br> | <a href="#pred279">use_clause</a> 
+  <br> | <a href="#pred136">group_template_declaration</a> 
+  <br> | <a href="#pred135">group_declaration</a> 
+ 
+<p></p></dd><dt> <a name="pred200">procedural_declarative_part</a> ::=
+  </dt><dd> { <a href="#pred199">procedural_declarative_item</a> }
+ 
+<p></p></dd><dt> <a name="pred201">procedural_statement_part</a> ::=
+  </dt><dd> { <a href="#pred230">sequential_statement</a> }
+ 
+<p></p></dd><dt> <a name="pred202">procedure_call</a> ::=
+  </dt><dd> <i>procedure_</i><a href="#pred173">name</a> [ ( <a href="#pred005">actual_parameter_part</a> ) ]
+ 
+<p></p></dd><dt> <a name="pred203">procedure_call_statement</a> ::=
+  </dt><dd> [ <a href="#pred160">label</a> : ] <a href="#pred202">procedure_call</a> ;
+ 
+<p></p></dd><dt> <a name="pred204">process_declarative_item</a> ::=
+  </dt><dd> <a href="#pred257">subprogram_declaration</a> 
+  <br> | <a href="#pred256">subprogram_body</a> 
+  <br> | <a href="#pred274">type_declaration</a> 
+  <br> | <a href="#pred263">subtype_declaration</a> 
+  <br> | <a href="#pred075">constant_declaration</a> 
+  <br> | <a href="#pred281">variable_declaration</a> 
+  <br> | <a href="#pred116">file_declaration</a> 
+  <br> | <a href="#pred009">alias_declaration</a> 
+  <br> | <a href="#pred023">attribute_declaration</a> 
+  <br> | <a href="#pred026">attribute_specification</a> 
+  <br> | <a href="#pred279">use_clause</a> 
+  <br> | <a href="#pred136">group_template_declaration</a> 
+  <br> | <a href="#pred135">group_declaration</a> 
+ 
+<p></p></dd><dt> <a name="pred205">process_declarative_part</a> ::=
+  </dt><dd> { <a href="#pred204">process_declarative_item</a> }
+ 
+<p></p></dd><dt> <a name="pred206">process_statement</a> ::=
+  </dt><dd> [ <i>process_</i><a href="#pred160">label</a> : ]
+    <ul> [ <b>postponed</b> ] <b>process</b> [ ( <a href="#pred228">sensitivity_list</a> ) ] [ <b>is</b> ]
+      <ul> <a href="#pred205">process_declarative_part</a> 
+    </ul> <b>begin</b> 
+      <ul> <a href="#pred207">process_statement_part</a> 
+    </ul> <b>end</b> [ <b>postponed</b> ] <b>process</b> [ <i>process_</i><a href="#pred160">label</a> ] ; </ul> 
+ 
+<p></p></dd><dt> <a name="pred207">process_statement_part</a> ::=
+  </dt><dd> { <a href="#pred230">sequential_statement</a> }
+ 
+<p></p></dd><dt> <a name="pred208">qualified_expression</a> ::=
+  </dt><dd> <a href="#pred276">type_mark</a> ' ( <a href="#pred112">expression</a> )
+  <br> | <a href="#pred276">type_mark</a> ' <a href="#pred008">aggregate</a> 
+ 
+<p></p></dd><dt> <a name="pred209">quantity_declaration</a> ::=
+  </dt><dd> <a href="#pred124">free_quantity_declaration</a> 
+  <br> | <a href="#pred045">branch_quantity_declaration</a> 
+  <br> | <a href="#pred251">source_quantity_declaration</a> 
+ 
+<p></p></dd><dt> <a name="pred210">quantity_list</a> ::=
+  </dt><dd> <i>quantity_</i><a href="#pred173">name</a> { , <i>quantity_</i><a href="#pred173">name</a> }
+  <br> | <b>others</b> 
+  <br> | <b>all</b> 
+ 
+<p></p></dd><dt> <a name="pred211">quantity_specification</a> ::=
+  </dt><dd> <a href="#pred210">quantity_list</a> : <a href="#pred276">type_mark</a> 
+ 
+<p></p></dd><dt> <a name="pred212">range</a> ::=
+  </dt><dd> <i>range_</i><a href="#pred025">attribute_name</a> 
+  <br> | <a href="#pred239">simple_expression</a> <a href="#pred087">direction</a> <a href="#pred239">simple_expression</a> 
+ 
+<p></p></dd><dt> <a name="pred213">range_constraint</a> ::=
+  </dt><dd> <b>range</b> <a href="#pred212">range</a> 
+ 
+<p></p></dd><dt> <a name="pred214">record_nature_definition</a> ::=
+  </dt><dd> <b>record</b> 
+    <ul> <a href="#pred176">nature_element_declaration</a> 
+    <br> { <a href="#pred176">nature_element_declaration</a> }
+  </ul><b>end</b> <b>record</b> [ <i>record_nature_</i><a href="#pred240">simple_name</a> ]
+ 
+<p></p></dd><dt> <a name="pred215">record_type_definition</a> ::=
+  </dt><dd> <b>record</b> 
+    <ul> <a href="#pred091">element_declaration</a> 
+    <br> { <a href="#pred091">element_declaration</a> }
+  </ul><b>end</b> <b>record</b> [ <i>record_type_</i><a href="#pred240">simple_name</a> ]
+ 
+<p></p></dd><dt> <a name="pred216">relation</a> ::=
+  </dt><dd> <a href="#pred231">shift_expression</a> [ <a href="#pred217">relational_operator</a> <a href="#pred231">shift_expression</a> ]
+ 
+<p></p></dd><dt> <a name="pred217">relational_operator</a> ::=
+  </dt><dd> = | /= | &lt; | &lt;= | &gt; | &gt;=
+ 
+<p></p></dd><dt> <a name="pred218">report_statement</a> ::=
+  </dt><dd>  [ <a href="#pred160">label</a> : ]
+    <ul> <b>report</b> <a href="#pred112">expression</a> 
+      <ul> [ <b>severity</b> <a href="#pred112">expression</a> ] ; </ul></ul> 
+ 
+<p></p></dd><dt> <a name="pred219">return_statement</a> ::=
+  </dt><dd> [ <a href="#pred160">label</a> : ] <b>return</b> [ <a href="#pred112">expression</a> ] ;
+ 
+<p></p></dd><dt> <a name="pred220">scalar_nature_definition</a> ::=
+  </dt><dd> <a href="#pred276">type_mark</a> <b>across</b> 
+  </dd><dd> <a href="#pred276">type_mark</a> <b>through</b> 
+  </dd><dd> <a href="#pred138">identifier</a> <b>reference</b> 
+ 
+<p></p></dd><dt> <a name="pred221">scalar_type_definition</a> ::=
+  </dt><dd> <a href="#pred109">enumeration_type_definition</a> 
+  <br> | <a href="#pred149">integer_type_definition</a> 
+  <br> | <a href="#pred120">floating_type_definition</a> 
+  <br> | <a href="#pred192">physical_type_definition</a> 
+ 
+<p></p></dd><dt> <a name="pred222">secondary_unit</a> ::=
+  </dt><dd> <a href="#pred013">architecture_body</a> 
+  <br> | <a href="#pred184">package_body</a> 
+ 
+<p></p></dd><dt> <a name="pred223">secondary_unit_declaration</a> ::=
+  </dt><dd> <a href="#pred138">identifier</a> = <a href="#pred191">physical_literal</a> ;
+ 
+<p></p></dd><dt> <a name="pred224">selected_name</a> ::=
+  </dt><dd> <a href="#pred196">prefix</a> . <a href="#pred265">suffix</a> 
+ 
+<p></p></dd><dt> <a name="pred225">selected_signal_assignment</a> ::=
+  </dt><dd> <b>with</b> <a href="#pred112">expression</a> <b>select</b> 
+    <ul> <a href="#pred266">target</a> &lt;= <a href="#pred183">options</a> <a href="#pred226">selected_waveforms</a> ; </ul> 
+ 
+<p></p></dd><dt> <a name="pred226">selected_waveforms</a> ::=
+  </dt><dd> { <a href="#pred283">waveform</a> <b>when</b> <a href="#pred054">choices</a> , }
+  <br> <a href="#pred283">waveform</a> <b>when</b> <a href="#pred054">choices</a> 
+ 
+<p></p></dd><dt> <a name="pred227">sensitivity_clause</a> ::=
+  </dt><dd> <b>on</b> <a href="#pred228">sensitivity_list</a> 
+ 
+<p></p></dd><dt> <a name="pred228">sensitivity_list</a> ::=
+  </dt><dd> <i>signal_</i><a href="#pred173">name</a> { , <i>signal_</i><a href="#pred173">name</a> }
+ 
+<p></p></dd><dt> <a name="pred229">sequence_of_statements</a> ::=
+  </dt><dd> { <a href="#pred230">sequential_statement</a> }
+ 
+<p></p></dd><dt> <a name="pred230">sequential_statement</a> ::=
+  </dt><dd> <a href="#pred282">wait_statement</a> 
+  <br> | <a href="#pred019">assertion_statement</a> 
+  <br> | <a href="#pred218">report_statement</a> 
+  <br> | <a href="#pred234">signal_assignment_statement</a> 
+  <br> | <a href="#pred280">variable_assignment_statement</a> 
+  <br> | <a href="#pred203">procedure_call_statement</a> 
+  <br> | <a href="#pred140">if_statement</a> 
+  <br> | <a href="#pred050">case_statement</a> 
+  <br> | <a href="#pred169">loop_statement</a> 
+  <br> | <a href="#pred178">next_statement</a> 
+  <br> | <a href="#pred110">exit_statement</a> 
+  <br> | <a href="#pred219">return_statement</a> 
+  <br> | <a href="#pred179">null_statement</a> 
+  <br> | <a href="#pred049">break_statement</a> 
+ 
+<p></p></dd><dt> <a name="pred231">shift_expression</a> ::=
+  </dt><dd> <a href="#pred239">simple_expression</a> [ <a href="#pred232">shift_operator</a> <a href="#pred239">simple_expression</a> ]
+ 
+<p></p></dd><dt> <a name="pred232">shift_operator</a> ::=
+  </dt><dd> <b>sll</b> | <b>srl</b> | <b>sla</b> | <b>sra</b> | <b>rol</b> | <b>ror</b> 
+ 
+<p></p></dd><dt> <a name="pred233">sign</a> ::=
+  </dt><dd> + | -
+ 
+<p></p></dd><dt> <a name="pred234">signal_assignment_statement</a> ::=
+  </dt><dd> [ <a href="#pred160">label</a> : ] <a href="#pred266">target</a> &lt;= [ <a href="#pred083">delay_mechanism</a> ] <a href="#pred283">waveform</a> ;
+ 
+<p></p></dd><dt> <a name="pred235">signal_declaration</a> ::=
+  </dt><dd> <b>signal</b> <a href="#pred139">identifier_list</a> : <a href="#pred264">subtype_indication</a> [ <a href="#pred236">signal_kind</a> ] [ := <a href="#pred112">expression</a> ] ;
+ 
+<p></p></dd><dt> <a name="pred236">signal_kind</a> ::=
+  </dt><dd> <b>register</b> | <b>bus</b> 
+ 
+<p></p></dd><dt> <a name="pred237">signal_list</a> ::=
+  </dt><dd> <i>signal_</i><a href="#pred173">name</a> { , <i>signal_</i><a href="#pred173">name</a> }
+  <br> | <b>others</b> 
+  <br> | <b>all</b> 
+ 
+<p></p></dd><dt> <a name="pred238">signature</a> ::=
+  </dt><dd> [ [ <a href="#pred276">type_mark</a> { , <a href="#pred276">type_mark</a> } ] [ <b>return</b> <a href="#pred276">type_mark</a> ] ]
+ 
+<p></p></dd><dt> <a name="pred239">simple_expression</a> ::=
+  </dt><dd> [ <a href="#pred233">sign</a> ] <a href="#pred267">term</a> { <a href="#pred007">adding_operator</a> <a href="#pred267">term</a> }
+ 
+<p></p></dd><dt> <a name="pred240">simple_name</a> ::=
+  </dt><dd> <a href="#pred138">identifier</a> 
+ 
+<p></p></dd><dt> <a name="pred241">simple_simultaneous_statement</a> ::=
+  </dt><dd> [ <a href="#pred160">label</a> : ] <a href="#pred239">simple_expression</a> == <a href="#pred239">simple_expression</a> [ <a href="#pred272">tolerance_aspect</a> ] ;
+ 
+<p></p></dd><dt> <a name="pred242">simultaneous_alternative</a> ::=
+  </dt><dd> <b>when</b> <a href="#pred054">choices</a> =&gt;
+    <ul> <a href="#pred248">simultaneous_statement_part</a> </ul> 
+ 
+<p></p></dd><dt> <a name="pred243">simultaneous_case_statement</a> ::=
+  </dt><dd> [ <i>case_</i><a href="#pred160">label</a> : ]
+    <ul> <b>case</b> <a href="#pred112">expression</a> <b>use</b> 
+      <ul> <a href="#pred242">simultaneous_alternative</a> 
+      <br> { <a href="#pred242">simultaneous_alternative</a> }
+    </ul> <b>end</b> <b>case</b> [ <i>case_</i><a href="#pred160">label</a> ] ; </ul> 
+ 
+<p></p></dd><dt> <a name="pred244">simultaneous_if_statement</a> ::=
+  </dt><dd> [ <i>if_</i><a href="#pred160">label</a> : ]
+    <ul> <b>if</b> <a href="#pred066">condition</a> <b>use</b> 
+      <ul>  <a href="#pred248">simultaneous_statement_part</a> 
+    </ul> { <b>elsif</b> <a href="#pred066">condition</a> <b>then</b> 
+      <ul> <a href="#pred248">simultaneous_statement_part</a> }
+    </ul> [ <b>else</b> 
+      <ul> <a href="#pred248">simultaneous_statement_part</a> ]
+    </ul> <b>end</b> <b>use</b> [ <i>if_</i><a href="#pred160">label</a> ] ; </ul> 
+ 
+<p></p></dd><dt> <a name="pred245">simultaneous_null_statement</a> ::=
+  </dt><dd> [ <a href="#pred160">label</a> : ] <b>null</b> ;
+ 
+<p></p></dd><dt> <a name="pred246">simultaneous_procedural_statement</a> ::=
+  </dt><dd> [ <i>procedural_</i><a href="#pred160">label</a> : ]
+    <ul> <b>procedural</b> [ <b>is</b> ]
+      <ul> <a href="#pred200">procedural_declarative_part</a> 
+    </ul> <b>begin</b> 
+      <ul> <a href="#pred201">procedural_statement_part</a> 
+    </ul> <b>end</b> <b>procedural</b> [ <i>procedural_</i><a href="#pred160">label</a> ] ; </ul> 
+ 
+<p></p></dd><dt> <a name="pred247">simultaneous_statement</a> ::=
+  </dt><dd> <a href="#pred241">simple_simultaneous_statement</a> 
+  <br> | <a href="#pred244">simultaneous_if_statement</a> 
+  <br> | <a href="#pred243">simultaneous_case_statement</a> 
+  <br> | <a href="#pred246">simultaneous_procedural_statement</a> 
+  <br> | <a href="#pred245">simultaneous_null_statement</a> 
+ 
+<p></p></dd><dt> <a name="pred248">simultaneous_statement_part</a> ::=
+  </dt><dd> { <a href="#pred247">simultaneous_statement</a> }
+ 
+<p></p></dd><dt> <a name="pred249">slice_name</a> ::=
+  </dt><dd> <a href="#pred196">prefix</a> ( <a href="#pred089">discrete_range</a> )
+ 
+<p></p></dd><dt> <a name="pred250">source_aspect</a> ::=
+  </dt><dd> <b>spectrum</b> <i>magnitude_</i><a href="#pred239">simple_expression</a> , <i>phase_</i><a href="#pred239">simple_expression</a> 
+  <br> | <b>noise</b> <i>power_</i><a href="#pred239">simple_expression</a> 
+ 
+<p></p></dd><dt> <a name="pred251">source_quantity_declaration</a> ::=
+  </dt><dd> <b>quantity</b> <a href="#pred139">identifier_list</a> : <a href="#pred264">subtype_indication</a> <a href="#pred250">source_aspect</a> ;
+ 
+<p></p></dd><dt> <a name="pred252">step_limit_specification</a> ::=
+  </dt><dd> <b>limit</b> <a href="#pred211">quantity_specification</a> <b>with</b> <i>real_</i><a href="#pred112">expression</a> ;
+ 
+<p></p></dd><dt> <a name="pred253">subnature_declaration</a> ::=
+  </dt><dd> <b>subnature</b> <a href="#pred138">identifier</a> <b>is</b> <a href="#pred254">subnature_indication</a> ;
+ 
+<p></p></dd><dt> <a name="pred254">subnature_indication</a> ::=
+  </dt><dd> <a href="#pred177">nature_mark</a> [ <a href="#pred142">index_constraint</a> ] [ <b>tolerance</b> <i>string_</i><a href="#pred112">expression</a> <b>across</b> <i>string_</i><a href="#pred112">expression</a> <b>through</b> ]
+ 
+<p></p></dd><dt> <a name="pred255">string_literal</a> ::=
+  </dt><dd> " { <a href="#pred132">graphic_character</a> } "
+ 
+<p></p></dd><dt> <a name="pred256">subprogram_body</a> ::=
+  </dt><dd> <a href="#pred261">subprogram_specification</a> <b>is</b> 
+    <ul> <a href="#pred259">subprogram_declarative_part</a> 
+  </ul> <b>begin</b> 
+    <ul> <a href="#pred262">subprogram_statement_part</a> 
+  </ul> <b>end</b> [ <a href="#pred260">subprogram_kind</a> ] [ <a href="#pred086">designator</a> ] ;
+ 
+<p></p></dd><dt> <a name="pred257">subprogram_declaration</a> ::=
+  </dt><dd> <a href="#pred261">subprogram_specification ;</a> 
+ 
+<p></p></dd><dt> <a name="pred258">subprogram_declarative_item</a> ::=
+  </dt><dd> <a href="#pred257">subprogram_declaration</a> 
+  <br> | <a href="#pred256">subprogram_body</a> 
+  <br> | <a href="#pred274">type_declaration</a> 
+  <br> | <a href="#pred263">subtype_declaration</a> 
+  <br> | <a href="#pred075">constant_declaration</a> 
+  <br> | <a href="#pred281">variable_declaration</a> 
+  <br> | <a href="#pred116">file_declaration</a> 
+  <br> | <a href="#pred009">alias_declaration</a> 
+  <br> | <a href="#pred023">attribute_declaration</a> 
+  <br> | <a href="#pred026">attribute_specification</a> 
+  <br> | <a href="#pred279">use_clause</a> 
+  <br> | <a href="#pred136">group_template_declaration</a> 
+  <br> | <a href="#pred135">group_declaration</a> 
+ 
+<p></p></dd><dt> <a name="pred259">subprogram_declarative_part</a> ::=
+  </dt><dd> { <a href="#pred258">subprogram_declarative_item</a> }
+ 
+<p></p></dd><dt> <a name="pred260">subprogram_kind</a> ::=
+  </dt><dd> <b>procedure</b> | <b>function</b> 
+ 
+<p></p></dd><dt> <a name="pred261">subprogram_specification</a> ::=
+  </dt><dd> <b>procedure</b> <a href="#pred086">designator</a> [ ( <a href="#pred122">formal_parameter_list</a> ) ]
+  <br> | [ <b>pure</b> | <b>impure</b> ] <b>function</b> <a href="#pred086">designator</a> [ ( <a href="#pred122">formal_parameter_list</a> ) ]
+    <ul> <b>return</b> <a href="#pred276">type_mark</a> </ul> 
+ 
+<p></p></dd><dt> <a name="pred262">subprogram_statement_part</a> ::=
+  </dt><dd> { <a href="#pred230">sequential_statement</a> }
+ 
+<p></p></dd><dt> <a name="pred263">subtype_declaration</a> ::=
+  </dt><dd> <b>subtype</b> <a href="#pred138">identifier</a> <b>is</b> <a href="#pred264">subtype_indication</a> ;
+ 
+<p></p></dd><dt> <a name="pred264">subtype_indication</a> ::=
+  </dt><dd> [ <i>resolution_function_</i><a href="#pred173">name</a> ] <a href="#pred276">type_mark</a> [ <a href="#pred078">constraint</a> ] [ <a href="#pred272">tolerance_aspect</a> ]
+ 
+<p></p></dd><dt> <a name="pred265">suffix</a> ::=
+  </dt><dd> <a href="#pred240">simple_name</a> 
+  <br> | <a href="#pred052">character_literal</a> 
+  <br> | <a href="#pred182">operator_symbol</a> 
+  <br> | <b>all</b> 
+ 
+<p></p></dd><dt> <a name="pred266">target</a> ::=
+  </dt><dd> <a href="#pred173">name</a> 
+  <br> | <a href="#pred008">aggregate</a> 
+ 
+<p></p></dd><dt> <a name="pred267">term</a> ::=
+  </dt><dd> <a href="#pred115">factor</a> { <a href="#pred172">multiplying_operator</a> <a href="#pred115">factor</a> }
+ 
+<p></p></dd><dt> <a name="pred268">terminal_aspect</a> ::=
+  </dt><dd> <i>plus_terminal_</i><a href="#pred173">name</a> [ <b>to</b> <i>minus_terminal_</i><a href="#pred173">name</a> ]
+ 
+<p></p></dd><dt> <a name="pred269">terminal_declaration</a> ::=
+  </dt><dd> <b>terminal</b> <a href="#pred139">identifier_list</a> : <a href="#pred254">subnature_indication</a> ;
+ 
+<p></p></dd><dt> <a name="pred270">through_aspect</a> ::=
+  </dt><dd> <a href="#pred139">identifier_list</a> [ <a href="#pred272">tolerance_aspect</a> ] [ := <a href="#pred112">expression</a> ] <b>through</b> 
+ 
+<p></p></dd><dt> <a name="pred271">timeout_clause</a> ::=
+  </dt><dd> <b>for</b> <i>time_or_real_</i><a href="#pred112">expression</a> 
+ 
+<p></p></dd><dt> <a name="pred272">tolerance_aspect</a> ::=
+  </dt><dd> <b>tolerance</b> <i>string_</i><a href="#pred112">expression</a> 
+ 
+<p></p></dd><dt> <a name="pred273">type_conversion</a> ::=
+  </dt><dd> <a href="#pred276">type_mark</a> ( <a href="#pred112">expression</a> )
+ 
+<p></p></dd><dt> <a name="pred274">type_declaration</a> ::=
+  </dt><dd> <a href="#pred125">full_type_declaration</a> 
+  <br> | <a href="#pred141">incomplete_type_declaration</a> 
+ 
+<p></p></dd><dt> <a name="pred275">type_definition</a> ::=
+  </dt><dd> <a href="#pred221">scalar_type_definition</a> 
+  <br> | <a href="#pred060">composite_type_definition</a> 
+  <br> | <a href="#pred002">access_type_definition</a> 
+  <br> | <a href="#pred119">file_type_definition</a> 
+ 
+<p></p></dd><dt> <a name="pred276">type_mark</a> ::=
+  </dt><dd> <i>type_</i><a href="#pred173">name</a> 
+  <br> | <i>subtype_</i><a href="#pred173">name</a> 
+ 
+<p></p></dd><dt> <a name="pred277">unconstrained_array_definition</a> ::=
+  </dt><dd> <b>array</b> ( <a href="#pred144">index_subtype_definition</a> { , <a href="#pred144">index_subtype_definition</a> } )
+    <ul> <b>of</b> <i>element_</i><a href="#pred264">subtype_indication</a> </ul> 
+ 
+<p></p></dd><dt> <a name="pred278">unconstrained_nature_definition</a> ::=
+  </dt><dd> <b>array</b> ( <a href="#pred144">index_subtype_definition</a> { , <a href="#pred144">index_subtype_definition</a> } )
+    <ul> <b>of</b> <a href="#pred264">subnature_indication</a> </ul> 
+ 
+<p></p></dd><dt> <a name="pred279">use_clause</a> ::=
+  </dt><dd> <b>use</b> <a href="#pred224">selected_name</a> { , <a href="#pred224">selected_name</a> } ;
+ 
+<p></p></dd><dt> <a name="pred280">variable_assignment_statement</a> ::=
+  </dt><dd> [ <a href="#pred160">label</a> : ] <a href="#pred266">target</a> := <a href="#pred112">expression</a> ;
+ 
+<p></p></dd><dt> <a name="pred281">variable_declaration</a> ::=
+  </dt><dd> [ <b>shared</b> ] <b>variable</b> <a href="#pred139">identifier_list</a> : <a href="#pred264">subtype_indication</a> [ := <a href="#pred112">expression</a> ] ;
+ 
+<p></p></dd><dt> <a name="pred282">wait_statement</a> ::=
+  </dt><dd> [ <a href="#pred160">label</a> : ] <b>wait</b> [ <a href="#pred227">sensitivity_clause</a> ] [ <a href="#pred067">condition_clause</a> ] [ <a href="#pred271">timeout_clause</a> ] ;
+ 
+<p></p></dd><dt> <a name="pred283">waveform</a> ::=
+  </dt><dd> <a href="#pred284">waveform_element</a> { , <a href="#pred284">waveform_element</a> }
+  <br> <b>| unaffected</b> 
+ 
+<p></p></dd><dt> <a name="pred284">waveform_element</a> ::=
+  </dt><dd> <i>value_</i><a href="#pred112">expression</a> [ <b>after</b> <i>time_</i><a href="#pred112">expression</a> ]
+  <br> | <b>null</b> [ <b>after</b> <i>time_</i><a href="#pred112">expression</a> ]
+ 
+</dd></dl> 
+ 
+<p></p><hr> 
+ 
+ 
+<h3><a name="keywords">reserved words</a></h3> 
+ 
+<ul><b> 
+abs, access, across, after, alias, all, and, architecture, array, assert, attribute,<br> 
+begin, block, body, break, buffer, bus,<br> 
+case, component, configuration, constant,<br> 
+disconnect, downto,<br> 
+else, elsif, end, entity, exit,<br> 
+file, for, function,<br> 
+generate, generic, group, guarded,<br> 
+if, impure, in, inertial, inout, is,<br> 
+label, library, limit, linkage, literal, loop,<br> 
+map, mod,<br> 
+nand, nature, new, next, noise, nor, not, null,<br> 
+of, on, open, or, others, out,<br> 
+package, port, postponed, procedural, procedure, process, pure,<br> 
+quantity,<br> 
+range, record, reference, register, reject, rem, report, return, rol, ror,<br> 
+select, severity, shared, signal, sla, sll, spectrum, sra, srl, subnature, subtype,<br> 
+terminal, then, through, to, tolerance, transport, type,<br> 
+unaffected, units, until, use,<br> 
+variable,<br> 
+wait, when, while, with,<br> 
+xnor, xor
+</b></ul> 
+ 
+<p></p><hr> 
+ 
+ 
+<h3><a name="attributes">predefined attributes</a></h3> 
+ 
+(t = scalar type, subtype or terminal, a = array type, s = signal, e = named entity, n = nature, q = quantity)
+ 
+<ul> 
+t'<b>base</b> 
+<br>t'<b>left</b> 
+<br>t'<b>right</b> 
+<br>t'<b>high</b> 
+<br>t'<b>low</b> 
+<br>t'<b>ascending</b> 
+<br>t'<b>image</b>(x)
+<br>t'<b>value</b>(x)
+<br>t'<b>pos</b>(x)
+<br>t'<b>val</b>(x)
+<br>t'<b>succ</b>(x)
+<br>t'<b>pred</b>(x)
+<br>t'<b>leftof</b>(x)
+<br>t'<b>rightof</b>(x)
+<br>t'<b>reference</b> 
+<br>t'<b>contribution</b> 
+<br>t'<b>tolerance</b> 
+ 
+<p>a'<b>left</b>[(n)]
+<br>a'<b>right</b>[(n)]
+<br>a'<b>high</b>[(n)]
+<br>a'<b>low</b>[(n)]
+<br>a'<b>range</b>[(n)]
+<br>a'<b>reverse_range</b>[(n)]
+<br>a'<b>length</b>[(n)]
+<br>a'<b>ascending</b>[(n)]
+ 
+</p><p>s'<b>delayed</b>[(t)]
+<br>s'<b>stable</b>[(t)]
+<br>s'<b>quiet</b>[(t)]
+<br>s'<b>transaction</b> 
+<br>s'<b>event</b> 
+<br>s'<b>active</b> 
+<br>s'<b>last_event</b> 
+<br>s'<b>last_active</b> 
+<br>s'<b>last_value</b> 
+<br>s'<b>driving</b> 
+<br>s'<b>driving_value</b> 
+<br>s'<b>ramp</b>[(trise [,tfall])]
+<br>s'<b>slew</b>[(rising_slope [,falling_slope])]
+ 
+</p><p>e'<b>simple_name</b> 
+<br>e'<b>instance_name</b> 
+<br>e'<b>path_name</b> 
+ 
+</p><p>n'<b>across</b> 
+<br>n'<b>through</b> 
+ 
+</p><p>q'<b>tolerance</b> 
+<br>q'<b>dot</b> 
+<br>q'<b>integ</b> 
+<br>q'<b>delayed</b>[(t)]
+<br>q'<b>above</b>(e)
+<br>q'<b>zoh</b>(t [,initial_delay])
+<br>q'<b>ltf</b>(num,den)
+<br>q'<b>ztf</b>(num,den,t [,initial_delay])
+<br>q'<b>slew</b>[(max_rising_slope [,max_falling_slope])]
+</p></ul> 
+ 
+ 
+ 
+ 
+</body></html>
